@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Ben Espinoza">
+    <title>Benny's Pizza</title>
+    <!-- Google font -->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,900,100" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- My CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+   
+    <div class="container">
+     <div class="header clearfix">
+      <img src="images/bennyspizzaLogoHighRes.png" alt="bennys pizza logo">
+      </div>
+
+      <div class="jumbotron">
+        <h1><strong>Benny's Pizza</strong></h1>
+        <p class="lead"></p>
+      </div>
+
+     <section id="content">
+			<section class="row">
+    	<section class="eight columns">
+            
+    <form id="form1" action="http://www.bennyspizza.com" method="post" target="_blank">
+    
+<!-- *** note *** maxlength and required done in js -->
+
+<!-- delivery info -->
+        <h2>Delivery Information</h2>
+        <p><em><i>Note: *Fields highlighted in red are required.</i></em></p>
+        <label for="name_input"><strong>Name:</strong></label>
+        <input type="text" id="name_input"><br>
+        <hr>
+        <label for="addressType">Address Type:</label>
+        <select class="box" id="addressType_input">
+            <option selected>---Select Address Type---</option>
+            <option value="House">House</option>
+            <option value="Apartment">Apartment</option>
+            <option value="Business">Business</option>
+            <option value="Campus">Campus</option>
+            <option value="Hotel">Hotel</option>
+            <option value="Dormitory">Dormitory</option>
+            <option value="Other">Other</option>
+        </select>
+        <label for="otherAddress" class="hidden"><strong>Other Address:</strong></label>
+        <input type="text" class="hidden" id="otherAddress">
+        <br>
+        <hr>
+        <label for="streetAddress"><strong>Street Address:</strong></label>
+        <input type="text" id="streetAddress" name="streetAddress"><br>
+        <label for="aptNumber">Apt#/Suite#/Room#</label>
+        <input type="text" id="aptNumber" name="aptNumber">
+        <br>
+        <label for="city_input"><strong>City:</strong></label>
+        <input type="text" id="city_input" name="city_input"><br>
+        <label for="state_input"><strong>State:</strong></label>
+        <input type="text" id="state_input" name="state_input">
+        </select>
+        <br>
+        <label for="zip_input"><strong>Zip:</strong></label>
+        <input type="zip" id="zip_input" name="zip_input"><br>
+        <hr>
+        <label for="phoneNumber_input"><strong>Phone Number: </strong><small>(xxx-xxx-xxxx)</small></label>
+        <input type="tel" id="phoneNumber_input" name="phoneNumber_input" pattern="\d{3}[\-]\d{3}[\-]\d{4}" title="Ex: 555-555-5555">
+        <label for="email_input"><strong>Email: </strong><small>(johndough@email.com)</small></label>
+        <input type="email" id="email_input" name="email_input"><br>
+        <hr>
+    </form>
+<!-- Pizza Order -->
+    <section id="pizzaOrder" class="pizzaOrderSection">        
+        <h2>Build Your Pizza</h2>
+        <strong>Dough Options:</strong>
+        <div class="doughOptions">
+            <label for="handTossedRadio"><input type="radio" name="product_crust" id="handTossedRadio" value="handTossedRadio"> Hand Tossed</label><br>
+            <label for="thinCrustRadio"><input type="radio" name="product_crust" id="thinCrustRadio" value="thinCrustRadio"> Thin Crust</label><br>
+            <label for="newYorkStyleRadio"><input type="radio" name="product_crust" id="newYorkStyleRadio" value="newYorkStyleRadio"> New York Style</label><br>
+            <label for="glutenFreeRadio"><input type="radio" name="product_crust" id="glutenFreeRadio" value="glutenFreeRadio"> Gluten Free</label>
+        </div>
+        <br>
+        <strong>Pizza Size:</strong>
+        <select name="pizzaSize" id="pizzaSize">
+            <option value="">---Choose a Crust:---Pizza Size---(Price)---</option>
+            <option value="Small"> Small ($9.99)</option>
+            <option value="Medium"> Medium ($12.99)</option>
+            <option value="Large">  Large ($14.99)</option>
+        </select>
+        <br>
+        <hr>
+        <label for="cheeseOptions"><strong>Cheese Options:</strong></label>
+        <select name="cheeseOptions" id="cheeseOptions">
+            <option value="selectedCheeseOptions" selected>---Cheese Options---(Price)---</option>
+            <option value="cheeseOptions"> Light: No Charge</option>
+            <option value="cheeseOptions"> Normal: (default) No Charge</option>
+            <option value="cheeseOptions"> Extra: + ($2.99)</option>
+            <option value="cheeseOptions"> Double: + ($3.99)</option>
+        </select>
+        <label for="sauceOptions"><strong>Sauce Options:</strong></label>
+        <select name="sauceOptions" id="sauceOptions">
+            <option value="selectedSauceOptions" selected>---Sauce Options:---(Price)---</option>
+            <option value="sauceOptions"> Regular Tomato: No Charge</option>
+            <option value="sauceOptions"> Hearty Tomato: + ($.99)</option>
+            <option value="sauceOptions"> BBQ Sauce: + ($1.99)</option>
+        </select>
+        <br>
+        <hr>
+        <label for="toppings"><strong>Toppings: <small>(Each topping is $.99 extra)</small></strong></label>
+        <div class="selections" id="toppings">
+            <input type="checkbox" name="toppings" value="pepperoni"> Pepperoni<br>
+            <input type="checkbox" name="toppings" value="sausage"> Sausage<br>
+            <input type="checkbox" name="toppings" value="ham"> Ham<br>
+            <input type="checkbox" name="toppings" value="bacon"> Bacon<br>
+            <input type="checkbox" name="toppings" value="salami"> Salami<br>
+            <input type="checkbox" name="toppings" value="peppers"> Peppers<br>
+            <input type="checkbox" name="toppings" value="olives"> Olives<br>
+            <input type="checkbox" name="toppings" value="jalapenos"> Jalapenos<br>
+            <input type="checkbox" name="toppings" value="mushrooms"> Mushrooms<br>
+            <input type="checkbox" name="toppings" value="pineapple"> Pineapple<br>
+            <input type="checkbox" name="toppings" value="onion"> Onion<br>
+        </div>
+        <hr>
+        <label for="comments"><strong>Special Instructions or Comments</strong></label><br>
+        <textarea name="comments" id="comments"></textarea>
+        <br>
+        <hr>
+        <section id="paymentInfo" class="paymentInfo">
+        <h2>Payment Information:</h2>
+        <label for="ccNumber">Credit Card Number</label>
+        <input type="text" name="ccNumber" id="ccNumber">
+        <br>
+        <label for="cvc">CVC Code</label>
+        <input type="text" name="cvc" id="cvc">
+        <br>
+        <label for="ccExpirationMonth">Expiration</label>
+        <select name="ccExpirationMonth" id="ccExpirationMonth">
+            <option value="selectMonth" selected>--Month--</option>
+              <option value="Jan">Jan</option>
+              <option value="Feb">Feb</option>
+              <option value="Mar">Mar</option>
+              <option value="Apr">Apr</option>
+              <option value="May">May</option>
+              <option value="Jun">Jun</option>
+              <option value="Jul">Jul</option>
+              <option value="Aug">Aug</option>
+              <option value="Sep">Sep</option>
+              <option value="Oct">Oct</option>
+              <option value="Nov">Nov</option>
+              <option value="Dec">Dec</option>
+        </select>
+        <select name="ccExpirationYear" id="ccExpirationYear">
+            <option value="selectYear" selected>--Year--</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+              <option value="2027">2027</option>
+        </select>
+        <br>
+        <hr>
+        <h2>Credit Card Billing Information</h2>
+        <label for="sameAsDelivery">Same as delivery</label>
+        <input id="sameAsDelivery" type="checkbox" value="SameAsDelivery">
+        <label for="billingName">Full Name</label>
+        <input type="text" class="billingName" id="billingName">
+        <label for="billingAddress">Billing Address</label>
+        <input type="text" class="billingAddress" id="billingAddress">
+        <label for="billingAptNumber">Apt#, Suite#, or Room #</label>
+        <input type="text" class="billingAptNumber" id="billingAptNumber">
+        <label for="billingCity">City</label>
+        <input type="text" class="billingCity" id="billingCity">
+        <label for="billingState">State </label>
+        <input type="text" class="billingState" id="billingState">
+        <label for="billingZip">Zip</label>
+        <input type="text" class="billingZip" id="billingZip">
+        <br>
+        <hr>
+        <p class="lead"></p>
+        <p><a class="btn btn-lg btn-success" id="orderUpButton" href="#" role="button">Order Up!</a></p>
+        <br>
+<!-- My fixed total -->      
+      <div id="orderTotal" class="orderTotal">
+          <p><h4><strong>Order Total: $<span>0.00</span></h4></strong></p>
+      </div>
+        <hr>
+    </form>
+        </section>
+    </section>
+		</section>
+		</section>
+		</section>
+
+		<footer>
+			<div id="copyRight" class="copyRight">Copyright &copy; 2016 | Benny"s Pizza, Inc.</div>
+            <div class="social-media"><h2>Follow Us!</h2>
+                <div class="one"><a href="http://www.facebook.com">Benny"s Pizza on Facebook<span>Facebook</span></a></div>
+                <div class="two"><a href="http://www.twitter.com">Benny"s Pizza on Twitter<span>Twitter</span></a></div>
+                <div class="three"><a href="http://www.google.com">Benny"s Pizza on Google+<span>Google+</span></a></div>
+                <div class="four"><a href="http://www.instagram.com">Benny"s Pizza on Instagram<span>Instagram</span></a></div>
+            </div>
+            <br>
+      </div>
+		</footer>
+
+    </div> <!-- /container -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- My js/script -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
