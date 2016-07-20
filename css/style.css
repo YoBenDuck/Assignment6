@@ -19,9 +19,6 @@ img { width: 140px; height: auto;}
     overflow: hidden;
 }
 
-.jumbotron, .h1 {
-    color: darkgreen; 
-}
 
 .hidden { display:none;}
 
@@ -36,7 +33,10 @@ img { width: 140px; height: auto;}
 
 
 /* BUTTON */
-.btn-success {
+#orderUpButtonContainer {
+    text-align: center;
+}
+#orderUpButton {
     color: #fff;
     background-color: darkgreen;
     border-color: darkgreen;

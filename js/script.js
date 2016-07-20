@@ -1,20 +1,7 @@
 // *** script.js for Benny's Pizza ***
 
-// document.getElementById('text_input').setAttribute('maxlength',20);
-/*
-function myFunction() {
-    var x = document.getElementById('text_input').maxLength;
-    document.getElementById('demo').innerHTML = x;
-}
 
-console.log(demo);*/
-
-// *** set the width of the text field ***
-/*function myFunction() {
-    document.getElementById('name_input').size = "30";
-}
-
-Properties:
+/*Properties:
 pizzaOrder= pizza delivery price
 
 Objects: 
@@ -74,42 +61,90 @@ orderUpButton = document.getElementById('orderUpButton');
 //Delivery Information
 name_input.onblur = function () {
     console.dir(name_input.value);   //contains text      
-};
+    if (name_input.value.match(/\d/) != null) { //validates input
+        name_input.style.backgroundColor='red';
+    } else {
+        name_input.style.backgroundColor='green';
+    }
+}; 
 
-addressType_input.onblur = function () {
+addressType_input.onchange = function () {
     console.dir(addressType_input);
-};
-
-otherAddress.onblur = function () {
-    console.dir(otherAddress);
+    if (addressType_input.value == 'wrong') {
+        addressType_input.style.backgroundColor='red';
+    } else {
+        addressType_input.style.backgroundColor='green';
+        if (addressType_input.value == 'Other') {
+            otherAddress.classList.remove('hidden');
+        } else {
+            otherAddress.classList.add('hidden');
+        }
+    }
 };
 
 streetAddress.onblur = function () {
-    console.dir(streetAddress);
+    console.dir(streetAddress.value); 
+    console.log(streetAddress.value.match(/^[ 0-9a-zA-Z.-]+$/));
+    if (streetAddress.value.match(/^[ 0-9a-zA-Z.-]+$/) != null) { 
+        streetAddress.style.backgroundColor='green';
+    } else {
+       streetAddress.style.backgroundColor='red';
+    }
 };
 
 aptNumber.onblur = function () {
-    console.dir(aptNumber);
+    console.dir(aptNumber.value);       
+    if (aptNumber.value.match(/^[ 0-9a-zA-Z.-]+$/) != null) { 
+        aptNumber.style.backgroundColor='green';
+    } else {
+       aptNumber.style.backgroundColor='red';
+    }
 };
 
 city_input.onblur = function () {
-    console.dir(city_input);
-};
+    console.dir(city_input.value);         
+    if (city_input.value.match(/^[ 0-9a-zA-Z.:-]+$/) != null) {
+        city_input.style.backgroundColor='green';
+    } else {
+        city_input.style.backgroundColor='red';
+    }
+}; 
+
 
 state_input.onblur = function () {
-    console.dir(state_input);
+    console.dir(state_input.value);         
+    if (state_input.value.match(/^[a-zA-Z]{2}$/) != null) {
+        state_input.style.backgroundColor='green';
+    } else {
+        state_input.style.backgroundColor='red';
+    }
 };
 
 zip_input.onblur = function () {
-    console.dir(zip_input);
+    console.dir(zip_input.value);         
+    if (zip_input.value.match(/^\b\d{5}(-\d{4})?\b$/) != null) {
+        zip_input.style.backgroundColor='green';
+    } else {
+        zip_input.style.backgroundColor='red';
+    }
 };
 
 phoneNumber_input.onblur = function () {
-    console.dir(phoneNumber_input);
+    console.dir(phoneNumber_input.value);         
+    if (phoneNumber_input.value.match(/^\d{3}-\d{3}-\d{4}$/) != null) {
+        phoneNumber_input.style.backgroundColor='green';
+    } else {
+        phoneNumber_input.style.backgroundColor='red';
+    }
 };
 
 email_input.onblur = function () {
-    console.dir(email_input);
+    console.dir(email_input.value);         
+    if (email_input.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) != null) {
+        email_input.style.backgroundColor='green';
+    } else {
+        email_input.style.backgroundColor='red';
+    }
 };
 
 // Objects
@@ -156,14 +191,15 @@ pizzaSize.onblur = function () {
 };
         
         
-/*function createSelectSizeOptions(pizzaSizesObj) {
-    var str = '<option>--Selcet an item--</option>';
+function createSelectSizeOptions(pizzaSizesObj) {
+    var str = '<option>--Selcet a Pizza Size--</option>';
     for (var prop in pizzaSizesObj) {
-        str += '<option value =' + prop + '>' + prop + ' ($' + pizzaSizesObj.prop')</option>';
-    }
-    sizeSelect.innerHTML = str;
+        str += '<option value="' + prop + '">' + prop + ' ($' + pizzaSizesObj[prop] + ')</option>';
+    } 
+    pizzaSize.classList.remove('hidden');
+    pizzaSize.innerHTML = str;
 }
-createSelectSizeOptions(handTossed);*/
+
 
 
 

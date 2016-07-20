@@ -27,32 +27,30 @@
   <body>
    
     <div class="container">
-     <div class="header clearfix">
-      <img src="images/bennyspizzaLogoHighRes.png" alt="bennys pizza logo">
-      </div>
 
       <div class="jumbotron">
-        <h1><strong>Benny's Pizza</strong></h1>
+        <div>
+        <img src="images/bennyspizzaLogoHighRes.png" alt="bennys pizza logo">
         <p class="lead"></p>
+        </div>
       </div>
 
      <section id="content">
-			<section class="row">
-    	<section class="eight columns">
-            
-    <form id="form1" action="http://www.bennyspizza.com" method="post" target="_blank">
+        <section class="row">
+    	    <section class="eight columns">
+                <form id="form1" action="http://www.bennyspizza.com" method="post" target="_blank">
     
 <!-- *** note *** maxlength and required done in js -->
 
 <!-- delivery info -->
         <h2>Delivery Information</h2>
-        <p><em><i>Note: *Fields highlighted in red are required.</i></em></p>
+        <p><em><i><small>Note: *Fields highlighted in red are required.</small></i></em></p>
         <label for="name_input"><strong>Name:</strong></label>
         <input type="text" id="name_input"><br>
         <hr>
-        <label for="addressType">Address Type:</label>
+        <label for="addressType_input">Address Type:</label>
         <select class="box" id="addressType_input">
-            <option selected>---Select Address Type---</option>
+            <option value="wrong" selected>---Select Address Type---</option>
             <option value="House">House</option>
             <option value="Apartment">Apartment</option>
             <option value="Business">Business</option>
@@ -61,8 +59,8 @@
             <option value="Dormitory">Dormitory</option>
             <option value="Other">Other</option>
         </select>
-        <label for="otherAddress" class="hidden"><strong>Other Address:</strong></label>
-        <input type="text" class="hidden" id="otherAddress">
+        <label id="otherAddress" class="hidden"><strong>Other Address:</strong>
+        <input type="text"></label>
         <br>
         <hr>
         <label for="streetAddress"><strong>Street Address:</strong></label>
@@ -76,7 +74,7 @@
         <input type="text" id="state_input" name="state_input">
         </select>
         <br>
-        <label for="zip_input"><strong>Zip:</strong></label>
+        <label for="zip_input"><strong>Zip:<small></strong></label>
         <input type="zip" id="zip_input" name="zip_input"><br>
         <hr>
         <label for="phoneNumber_input"><strong>Phone Number: </strong><small>(xxx-xxx-xxxx)</small></label>
@@ -97,11 +95,7 @@
         </div>
         <br>
         <strong>Pizza Size:</strong>
-        <select name="pizzaSize" id="pizzaSize">
-            <option value="">---Choose a Crust:---Pizza Size---(Price)---</option>
-            <option value="Small"> Small ($9.99)</option>
-            <option value="Medium"> Medium ($12.99)</option>
-            <option value="Large">  Large ($14.99)</option>
+        <select name="pizzaSize" id="pizzaSize" class="hidden">
         </select>
         <br>
         <hr>
@@ -200,7 +194,7 @@
         <br>
         <hr>
         <p class="lead"></p>
-        <p><a class="btn btn-lg btn-success" id="orderUpButton" href="#" role="button">Order Up!</a></p>
+        <p id="orderUpButtonContainer"><a class="btn btn-lg btn-success" id="orderUpButton" href="#" role="button">Order Up!</a></p>
         <br>
 <!-- My fixed total -->      
       <div id="orderTotal" class="orderTotal">
