@@ -56,7 +56,8 @@ ccNumber = document.getElementById('ccNumber'),
 ccExpirationMonth = document.getElementById('ccExpirationMonth'),
 cvc = document.getElementById('cvc'),
 sameAsDelivery = document.getElementById('sameAsDelivery'),
-orderUpButton = document.getElementById('orderUpButton');
+orderUpButton = document.getElementById('orderUpButton'),
+runningTotal = document.getElementById('runningTotal');
 
 //Delivery Information
 name_input.onblur = function () {
@@ -186,7 +187,7 @@ glutenFreeRadio.onclick = function () {
     createSelectSizeOptions(gluttenFree);
 };
 
-pizzaSize.onblur = function () {
+pizzaSize.onchange = function () {
     console.dir(pizzaSize.value); 
 };
         
@@ -200,6 +201,44 @@ function createSelectSizeOptions(pizzaSizesObj) {
     pizzaSize.innerHTML = str;
 }
 
+//cc validator
+ccNumber.onblur = function() {
+  if (validCreditCardNo(ccNumber.value)) {
+      ccNumber.style.backgroundColor='green';
+  } else {
+      ccNumber.style.backgroundColor='red';
+  }
+};
+
+ccExpirationMonth.onchange = function () {
+    console.dir(ccExpirationMonth);
+    if (ccExpirationMonth.value == 'selectMonth') {
+        ccExpirationMonth.style.backgroundColor='red';
+    } else {
+        ccExpirationMonth.style.backgroundColor='green';
+    }
+};
+
+//*** Extra Credit *** credit card number validation with Luhn Formula
+        function validCreditCardNo(value) {
+            //window.alert("validCreditCardNo(value) fired!");
+            // accept only digits, dashes or spaces
+        if (/[^0-9-\s]+/.test(value)) return false;
+        // The Luhn Algorithm...
+        var nCheck = 0, nDigit = 0, bEven = false;
+        value = value.replace(/\D/g, "");
+        for (var n = value.length - 1; n >= 0; n--) {
+        var cDigit = value.charAt(n),
+    nDigit = parseInt(cDigit, 10);
+        if (bEven) {
+        if ((nDigit *= 2) > 9) nDigit -= 9;
+        }
+        nCheck += nDigit;
+        bEven = !bEven;
+        }
+        return (nCheck % 10) == 0;
+         }    
+         //usage: var result = validCreditCardNo("9999-9999-9999-9999");
 
 
 

@@ -41,72 +41,16 @@ img { width: 140px; height: auto;}
     background-color: darkgreen;
     border-color: darkgreen;
 }
-.orderTotal { text-align: center; color: darkgreen; }
+.orderTotal { position: fixed; top: 20px; right: 20px; padding: 0 10px; text-align: center; color: darkgreen; background-color: rgba(0, 0, 0, 0.3); border-radius: 6px; }
 .copyRight { text-align: center; }
 .social-media { color: darkgreen; }
-/*input[type='submit'] {
-  display: inline-block;
-  height: 38px;
-  padding: 0 30px;
-  color: #555;
-  text-align: center;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 38px;
-  letter-spacing: .1rem;
-  text-transform: uppercase;
-  text-decoration: none;
-  white-space: nowrap;
-  background-color: transparent;
-  border-radius: 4px;
-  border: 1px solid #bbb;
-  cursor: pointer;
-  box-sizing: border-box; }
 
- Forms 
-input[type="email"],
-input[type="text"],
-input[type="tel"],
-textarea,
-select {
-  display: block;
-  width: 400px;
-  height: 38px;
-  margin: -20px auto;
-  padding: 6px 10px; 
-  background-color: #fff;
-  border: 1px solid #D1D1D1;
-  border-radius: 4px;
-  box-shadow: none;
-  box-sizing: border-box; }
-
-textarea {
-  min-height: 65px;
-  padding-top: 6px;
-  padding-bottom: 6px; }
-
-input[type="email"]:focus,
-input[type="text"]:focus,
-input[type="tel"]:focus,
-textarea:focus,
-select:focus {
-  border: 1px solid #33C3F0;
-  outline: 0; }
-
-.selections {
-    display: block;
-    width: 400px;
-    padding-bottom: 25px;
-    margin: -20px auto;}
-
-input:required      {border-color:red;}
-input:valid         {border-color:green;}*/
 
 /* FOOTER */
 .social-media               {margin:0 auto;width:165px;}
 .social-media div           {float:left;margin-right:5px;}
 .social-media a             {display:block;width:36px;height:36px;text-indent:-9999px;}
-.social-media div.one       {background:url('../images/bennys-pizza-social-icons.png') 0 0;}
-.social-media div.two 	    {background:url('../images/bennys-pizza-social-icons.png') -38px 0;}
-.social-media div.three     {background:url('../images/bennys-pizza-social-icons.png') -76px 0;}
-.social-media div.four 	    {background:url('../images/bennys-pizza-social-icons.png') -114px 0;}
+.social-media div.one       {background:url('../images/social-icons-sketchtransparent.png') 0 0;}
+.social-media div.two 	    {background:url('../images/social-icons-sketchtransparent.png') -38px 0;}
+.social-media div.three     {background:url('../images/social-icons-sketchtransparent.png') -80px 0;}
+.social-media div.four 	    {background:url('../images/social-icons-sketchtransparent.png') -120px 0;}
