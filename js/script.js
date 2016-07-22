@@ -1,7 +1,7 @@
 // *** script.js for Benny's Pizza ***
 
-
-/*Properties:
+/*** Notes Section ***
+Properties:
 pizzaOrder= pizza delivery price
 
 Objects: 
@@ -23,11 +23,9 @@ size 'S' 'M' 'L' 'XL'*/
 // validate at least one toppings was selected
 // add them to pizza obj
 
-
 //create function validating size crust 
 
-
-// Variables
+//*** Variables ***
                             
 var pizzaOrder = [],
 currentPizzaOrder,
@@ -56,10 +54,16 @@ ccNumber = document.getElementById('ccNumber'),
 ccExpirationMonth = document.getElementById('ccExpirationMonth'),
 cvc = document.getElementById('cvc'),
 sameAsDelivery = document.getElementById('sameAsDelivery'),
+billingName = document.getElementById('billingName'),
+billingAddress = document.getElementById('billingAddress'),
+billingAptNumber = document.getElementById('billingAptNumber'),
+billingCity = document.getElementById('billingCity'),
+billingState = document.getElementById('billingState'),
+billingZip = document.getElementById('billingZip'),
 orderUpButton = document.getElementById('orderUpButton'),
 runningTotal = document.getElementById('runningTotal');
 
-//Delivery Information
+//*** Delivery Information ***
 name_input.onblur = function () {
     console.dir(name_input.value);   //contains text      
     if (name_input.value.match(/\d/) != null) { //validates input
@@ -111,7 +115,6 @@ city_input.onblur = function () {
     }
 }; 
 
-
 state_input.onblur = function () {
     console.dir(state_input.value);         
     if (state_input.value.match(/^[a-zA-Z]{2}$/) != null) {
@@ -148,7 +151,7 @@ email_input.onblur = function () {
     }
 };
 
-// Objects
+// *** Objects ***
 var handTossed = {
     small: 9.99,
     medium: 12.99,
@@ -165,7 +168,6 @@ var newYorkStyle = {
 var gluttenFree = {
     small: 10.99
 };
-
 
 handTossedRadio.onclick = function () {
     console.log('populate select w handtossed');
@@ -186,11 +188,6 @@ glutenFreeRadio.onclick = function () {
     console.log('populate select w gluttenFree');
     createSelectSizeOptions(gluttenFree);
 };
-
-pizzaSize.onchange = function () {
-    console.dir(pizzaSize.value); 
-};
-        
         
 function createSelectSizeOptions(pizzaSizesObj) {
     var str = '<option>--Selcet a Pizza Size--</option>';
@@ -201,6 +198,42 @@ function createSelectSizeOptions(pizzaSizesObj) {
     pizzaSize.innerHTML = str;
 }
 
+pizzaSize.onchange = function () {
+    console.dir(pizzaSize.value);
+    if (pizzaSize.value == '--Selcet a Pizza Size--') {
+        pizzaSize.style.backgroundColor='red';
+    } else {
+        pizzaSize.style.backgroundColor='green';
+    }
+};
+
+cheeseOptions.onchange = function () {
+    console.dir(cheeseOptions.value);
+    if (cheeseOptions.value == 'selectedCheeseOptions') {
+        cheeseOptions.style.backgroundColor='red';
+    } else {
+        cheeseOptions.style.backgroundColor='green';
+    }
+};
+
+sauceOptions.onchange = function () {
+    console.dir(sauceOptions.value);
+    if (sauceOptions.value == 'selectedSauceOptions') {
+        sauceOptions.style.backgroundColor='red';
+    } else {
+        sauceOptions.style.backgroundColor='green';
+    }
+};
+
+toppings.onclick = function () {
+    console.dir(toppings.value);
+    if (toppings.value == 'toppings') {
+        toppings.style.backgroundColor='red';
+    } else {
+        toppings.style.backgroundColor='green';
+    }
+};
+
 //cc validator
 ccNumber.onblur = function() {
   if (validCreditCardNo(ccNumber.value)) {
@@ -208,6 +241,15 @@ ccNumber.onblur = function() {
   } else {
       ccNumber.style.backgroundColor='red';
   }
+};
+
+cvc.onblur = function () {
+    console.dir(cvc.value);         
+    if (cvc.value.match(/^\d{3}$/) != null) {
+        cvc.style.backgroundColor='green';
+    } else {
+        cvc.style.backgroundColor='red';
+    }
 };
 
 ccExpirationMonth.onchange = function () {
@@ -219,26 +261,97 @@ ccExpirationMonth.onchange = function () {
     }
 };
 
-//*** Extra Credit *** credit card number validation with Luhn Formula
-        function validCreditCardNo(value) {
-            //window.alert("validCreditCardNo(value) fired!");
-            // accept only digits, dashes or spaces
+ccExpirationYear.onchange = function () {
+    console.dir(ccExpirationYear);
+    if (ccExpirationYear.value == 'selectYear') {
+        ccExpirationYear.style.backgroundColor='red';
+    } else {
+        ccExpirationYear.style.backgroundColor='green';
+    }
+};
+
+// *** Extra Credit *** cc number validation with LF
+    function validCreditCardNo(value) {
+        if (value == '') return false; 
         if (/[^0-9-\s]+/.test(value)) return false;
-        // The Luhn Algorithm...
+// *** The Luhn Formula ***
         var nCheck = 0, nDigit = 0, bEven = false;
         value = value.replace(/\D/g, "");
         for (var n = value.length - 1; n >= 0; n--) {
-        var cDigit = value.charAt(n),
-    nDigit = parseInt(cDigit, 10);
-        if (bEven) {
-        if ((nDigit *= 2) > 9) nDigit -= 9;
-        }
-        nCheck += nDigit;
-        bEven = !bEven;
+            var cDigit = value.charAt(n),
+            nDigit = parseInt(cDigit, 10);
+            if (bEven) {
+            if ((nDigit *= 2) > 9) nDigit -= 9;
+            }
+            nCheck += nDigit;
+            bEven = !bEven;
         }
         return (nCheck % 10) == 0;
-         }    
-         //usage: var result = validCreditCardNo("9999-9999-9999-9999");
+    }    
 
+// *** cc Billing Information *** 
 
+sameAsDelivery.onclick = function () {
+    console.dir(sameAsDelivery.value);
+    billingName.value = name_input.value;
+    billingAddress.value = streetAddress.value;
+    billingAptNumber.value = aptNumber.value;
+    billingCity.value = city_input.value;
+    billingState.value = state_input.value;
+    billingZip.value = zip_input.value;
+};
 
+billingName.onblur = function () {
+    console.dir(billingName.value);        
+    if (billingName.value.match(/\d/) != null) { 
+        billingName.style.backgroundColor='red';
+    } else {
+        billingName.style.backgroundColor='green';
+    }
+}; 
+
+billingAddress.onblur = function () {
+    console.dir(billingAddress.value); 
+    console.log(billingAddress.value.match(/^[ 0-9a-zA-Z.-]+$/));
+    if (billingAddress.value.match(/^[ 0-9a-zA-Z.-]+$/) != null) { 
+        billingAddress.style.backgroundColor='green';
+    } else {
+       billingAddress.style.backgroundColor='red';
+    }
+};
+
+billingAptNumber.onblur = function () {
+    console.dir(billingAptNumber.value);       
+    if (billingAptNumber.value.match(/^[ 0-9a-zA-Z.-]+$/) != null) { 
+        billingAptNumber.style.backgroundColor='green';
+    } else {
+       billingAptNumber.style.backgroundColor='red';
+    }
+};
+
+billingCity.onblur = function () {
+    console.dir(billingCity.value);         
+    if (billingCity.value.match(/^[ 0-9a-zA-Z.:-]+$/) != null) {
+        billingCity.style.backgroundColor='green';
+    } else {
+        billingCity.style.backgroundColor='red';
+    }
+}; 
+
+billingState.onblur = function () {
+    console.dir(billingState.value);         
+    if (billingState.value.match(/^[a-zA-Z]{2}$/) != null) {
+        billingState.style.backgroundColor='green';
+    } else {
+        billingState.style.backgroundColor='red';
+    }
+};
+
+billingZip.onblur = function () {
+    console.dir(billingZip.value);         
+    if (billingZip.value.match(/^\b\d{5}(-\d{4})?\b$/) != null) {
+        billingZip.style.backgroundColor='green';
+    } else {
+        billingZip.style.backgroundColor='red';
+    }
+};

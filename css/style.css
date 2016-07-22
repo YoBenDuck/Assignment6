@@ -8,7 +8,8 @@ background: -webkit-linear-gradient(top,  #ffb76b 0%,#ffa73d 30%,#ff7c00 50%,#ff
 background: linear-gradient(to bottom,  #ffb76b 0%,#ffa73d 30%,#ff7c00 50%,#ff7f04 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', endColorstr='#ff7f04',GradientType=0 ); /* IE6-9 background:#FFF repeat-x;margin:0;*/}
 
-img { width: 140px; height: auto;}
+/* CONTAINER */
+.jumbotron img { width: 140px; height: auto;}
 
 .jumbotron {
     position: relative;
@@ -19,18 +20,19 @@ img { width: 140px; height: auto;}
     overflow: hidden;
 }
 
-
 .hidden { display:none;}
 
+.ccLogo img {
+   width: 180px;
+}
 
-/* NAVIGATION */
+/*#cvcCss {
+    float: right;
+}
 
-
-/* CONTAINER */
-
-
-/* CONTENT */
-
+#ccExpirationMonthCss {
+    float: right;
+}*/
 
 /* BUTTON */
 #orderUpButtonContainer {
@@ -41,14 +43,13 @@ img { width: 140px; height: auto;}
     background-color: darkgreen;
     border-color: darkgreen;
 }
-.orderTotal { position: fixed; top: 20px; right: 20px; padding: 0 10px; text-align: center; color: darkgreen; background-color: rgba(0, 0, 0, 0.3); border-radius: 6px; }
+.orderTotal { position: fixed; top: 20px; right: 20px; padding: 0 10px; text-align: center; color: darkgreen; background-color: rgba(0, 0, 0, 0.25); border-radius: 6px; }
 .copyRight { text-align: center; }
 .social-media { color: darkgreen; }
 
-
 /* FOOTER */
-.social-media               {margin:0 auto;width:165px;}
-.social-media div           {float:left;margin-right:5px;}
+.social-media               {margin:0 auto; width:165px;}
+.social-media div           {float:left;}
 .social-media a             {display:block;width:36px;height:36px;text-indent:-9999px;}
 .social-media div.one       {background:url('../images/social-icons-sketchtransparent.png') 0 0;}
 .social-media div.two 	    {background:url('../images/social-icons-sketchtransparent.png') -38px 0;}

@@ -65,18 +65,17 @@
         <br>
         <hr>
         <label for="streetAddress"><strong>Street Address:</strong></label>
-        <input type="text" id="streetAddress" name="streetAddress"><br>
+        <input type="text" id="streetAddress" name="streetAddress">
         <label for="aptNumber">Apt#/Suite#/Room#</label>
         <input type="text" id="aptNumber" name="aptNumber">
         <br>
         <label for="city_input"><strong>City:</strong></label>
-        <input type="text" id="city_input" name="city_input"><br>
+        <input type="text" id="city_input" name="city_input">
         <label for="state_input"><strong>State:</strong></label>
         <input type="text" id="state_input" name="state_input">
         </select>
-        <br>
         <label for="zip_input"><strong>Zip:<small></strong></label>
-        <input type="zip" id="zip_input" name="zip_input"><br>
+        <input type="zip" id="zip_input" name="zip_input">
         <hr>
         <label for="phoneNumber_input"><strong>Phone Number: </strong><small>(xxx-xxx-xxxx)</small></label>
         <input type="tel" id="phoneNumber_input" name="phoneNumber_input" pattern="\d{3}[\-]\d{3}[\-]\d{4}" title="Ex: 555-555-5555">
@@ -89,9 +88,9 @@
         <h2>Build Your Pizza</h2>
         <strong>Dough Options:</strong>
         <div class="doughOptions">
-            <label for="handTossedRadio"><input type="radio" name="product_crust" id="handTossedRadio" value="handTossedRadio"> Hand Tossed</label><br>
-            <label for="thinCrustRadio"><input type="radio" name="product_crust" id="thinCrustRadio" value="thinCrustRadio"> Thin Crust</label><br>
-            <label for="newYorkStyleRadio"><input type="radio" name="product_crust" id="newYorkStyleRadio" value="newYorkStyleRadio"> New York Style</label><br>
+            <label for="handTossedRadio"><input type="radio" name="product_crust" id="handTossedRadio" value="handTossedRadio"> Hand Tossed</label>
+            <label for="thinCrustRadio"><input type="radio" name="product_crust" id="thinCrustRadio" value="thinCrustRadio"> Thin Crust</label>
+            <label for="newYorkStyleRadio"><input type="radio" name="product_crust" id="newYorkStyleRadio" value="newYorkStyleRadio"> New York Style</label>
             <label for="glutenFreeRadio"><input type="radio" name="product_crust" id="glutenFreeRadio" value="glutenFreeRadio"> Gluten Free</label>
         </div>
         <br>
@@ -136,15 +135,15 @@
         <textarea name="comments" id="comments"></textarea>
         <br>
         <hr>
+<!-- *** Payment Info *** -->        
         <section id="paymentInfo" class="paymentInfo">
         <h2>Payment Information:</h2>
-        <label for="ccNumber">Credit Card Number</label>
-        <input type="text" name="ccNumber" id="ccNumber">
-        <br>
-        <label for="cvc">CVC Code</label>
-        <input type="text" name="cvc" id="cvc">
-        <br>
-        <label for="ccExpirationMonth">Expiration</label>
+        <div id="ccLogo" class="ccLogo"><strong><small>We accept: </small></strong><img src="images/credit-card-icons-full.png" alt="bennys pizza credit card logo"></div>
+        <span id="ccNumberCss"><label for="ccNumber">Credit Card Number</label>
+        <input type="text" name="ccNumber" id="ccNumber"></span>
+        <span id="cvcCss"><label for="cvc">CVC Code</label>
+        <input type="text" name="cvc" id="cvc"></span>
+        <span id="ccExpirationMonthCss"><label for="ccExpirationMonth">Expiration</label>
         <select name="ccExpirationMonth" id="ccExpirationMonth">
             <option value="selectMonth" selected>--Month--</option>
               <option value="Jan">Jan</option>
@@ -174,10 +173,10 @@
               <option value="2025">2025</option>
               <option value="2026">2026</option>
               <option value="2027">2027</option>
-        </select>
+        </select></span>
         <br>
         <hr>
-        <h2>Credit Card Billing Information</h2>
+        <h2>Billing Address:</h2>
         <label for="sameAsDelivery">Same as delivery</label>
         <input id="sameAsDelivery" type="checkbox" value="SameAsDelivery">
         <label for="billingName">Full Name</label>
@@ -210,14 +209,13 @@
 		</section>
 
 		<footer>
-			<div id="copyRight" class="copyRight">Copyright &copy; 2016 | Benny"s Pizza, Inc.</div>
-            <div class="social-media"><h2>Follow Us!</h2>
+			<p id="copyRight" class="copyRight"> <small><strong>Copyright&copy;2016 | Benny's Pizza, Inc.</strong></small></p>
+            <div class="social-media"><h2> Follow Us!</h2>
                 <div class="one"><a href="http://www.facebook.com">Benny"s Pizza on Facebook<span>Facebook</span></a></div>
                 <div class="two"><a href="http://www.twitter.com">Benny"s Pizza on Twitter<span>Twitter</span></a></div>
                 <div class="three"><a href="http://www.google.com">Benny"s Pizza on Google+<span>Google+</span></a></div>
                 <div class="four"><a href="http://www.instagram.com">Benny"s Pizza on Instagram<span>Instagram</span></a></div>
             </div>
-            <br>
       </div>
 		</footer>
 
