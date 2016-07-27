@@ -27,14 +27,34 @@ size 'S' 'M' 'L' 'XL'*/
 
 //*** Variables ***
                             
-var pizzaOrder = [],
-currentPizzaOrder,
-pizzaOrder = document.getElementById('pizzaOrder'),
+var pizzaOrder = {
+    name: '',
+    addressType: '',
+    toppings: 0,
+    streetAddress: '',
+    apt: 0,
+    city: '',
+    state: '',
+    zip: 0,
+    phoneNumber: 0,
+    email: '',
+    pizzaSize: '',
+    dough: '',
+    cheese: '',
+    sauce: '',
+    toppings: 0,
+    comments: '',
+    price: 0,
+    payment:'',
+    ccNumber: 0
+},
+
+//pizzaOrder = document.getElementById('pizzaOrder'),
 name_input = document.getElementById('name_input'),
 addresstype_input = document.getElementById('addressType_input'),
 otherAddress = document.getElementById('otherAddress'),
 streetAddress = document.getElementById('streetAddress'),
-apt_input = document.getElementById('aptNumber'),
+apt_Number = document.getElementById('apt_Number'),
 city_input = document.getElementById('city_input'),
 state = document.getElementById('state_input'),
 zip_input = document.getElementById('zip_input'),
@@ -42,9 +62,9 @@ phoneNumber_input = document.getElementById('phoneNumber_input'),
 email_input = document.getElementById('email_input'),
 pizzaSize = document.getElementById('pizzaSize'),
 handTossedRadio = document.getElementById('handTossedRadio'),
-thinCrust = document.getElementById('thinCrustRadio'),
-newYorkStyle = document.getElementById('newYorkStyleRadio'),
-glutenFree = document.getElementById('glutenFreeRadio'),
+thinCrustRadio = document.getElementById('thinCrustRadio'),
+newYorkStyleRadio = document.getElementById('newYorkStyleRadio'),
+gluttenFreeRadio = document.getElementById('gluttenFreeRadio'),
 cheeseOptions = document.getElementById('cheeseOptions'),
 sauceOptions = document.getElementById('sauceOptions'),
 toppings = document.getElementById('toppings'),
@@ -61,7 +81,8 @@ billingCity = document.getElementById('billingCity'),
 billingState = document.getElementById('billingState'),
 billingZip = document.getElementById('billingZip'),
 orderUpButton = document.getElementById('orderUpButton'),
-runningTotal = document.getElementById('runningTotal');
+displayTotal = document.getElementById('displayTotal'),
+total = 0.00;
 
 //*** Delivery Information ***
 name_input.onblur = function () {
@@ -70,6 +91,7 @@ name_input.onblur = function () {
         name_input.style.backgroundColor='red';
     } else {
         name_input.style.backgroundColor='green';
+        pizzaOrder.name_input = name_input.value;
     }
 }; 
 
@@ -84,25 +106,28 @@ addressType_input.onchange = function () {
         } else {
             otherAddress.classList.add('hidden');
         }
+        pizzaOrder.addressType = addresstype_input.value;
     }
 };
 
 streetAddress.onblur = function () {
     console.dir(streetAddress.value); 
-    console.log(streetAddress.value.match(/^[ 0-9a-zA-Z.-]+$/));
     if (streetAddress.value.match(/^[ 0-9a-zA-Z.-]+$/) != null) { 
         streetAddress.style.backgroundColor='green';
+        pizzaOrder.streetAddress = streetAddress.value;
     } else {
        streetAddress.style.backgroundColor='red';
     }
 };
 
-aptNumber.onblur = function () {
-    console.dir(aptNumber.value);       
-    if (aptNumber.value.match(/^[ 0-9a-zA-Z.-]+$/) != null) { 
-        aptNumber.style.backgroundColor='green';
+apt_Number.onblur = function () {
+    console.dir(apt_Number.value);       
+    if (apt_Number.value.match(/^[ 0-9a-zA-Z.-]+$/) != null) { 
+        apt_Number.style.backgroundColor='green';
+        pizzaOrder.aptNumber = apt_Number.value;
+        console.log(pizzaOrder);
     } else {
-       aptNumber.style.backgroundColor='red';
+       apt_Number.style.backgroundColor='red';
     }
 };
 
@@ -110,6 +135,7 @@ city_input.onblur = function () {
     console.dir(city_input.value);         
     if (city_input.value.match(/^[ 0-9a-zA-Z.:-]+$/) != null) {
         city_input.style.backgroundColor='green';
+        pizzaOrder.city = city_input.value;
     } else {
         city_input.style.backgroundColor='red';
     }
@@ -170,22 +196,26 @@ var gluttenFree = {
 };
 
 handTossedRadio.onclick = function () {
-    console.log('populate select w handtossed');
+    //console.log('populate select w handtossed');
+    pizzaOrder.dough = handTossedRadio.value;
     createSelectSizeOptions(handTossed);
 };
 
 thinCrustRadio.onclick = function () {
-    console.log('populate select w thinCrust');
+    //console.log('populate select w thinCrust');
+    pizzaOrder.dough = thinCrustRadio.value;
     createSelectSizeOptions(thinCrust);
 };
 
 newYorkStyleRadio.onclick = function () {
-    console.log('populate select w newYorkStyle');
+    //console.log('populate select w newYorkStyle');
+    pizzaOrder.dough = newYorkStyleRadio.value;
     createSelectSizeOptions(newYorkStyle);
 };
 
-glutenFreeRadio.onclick = function () {
-    console.log('populate select w gluttenFree');
+gluttenFreeRadio.onclick = function () {
+    //console.log('populate select w gluttenFree');
+    pizzaOrder.dough = gluttenFreeRadio.value;
     createSelectSizeOptions(gluttenFree);
 };
         
@@ -204,7 +234,18 @@ pizzaSize.onchange = function () {
         pizzaSize.style.backgroundColor='red';
     } else {
         pizzaSize.style.backgroundColor='green';
-    }
+        pizzaOrder.pizzaSize = pizzaSize.value;
+        if (pizzaOrder.dough == 'handTossed') {
+            pizzaOrder.price = handTossed[pizzaSize.value];
+        } else if (pizzaOrder.dough == 'thinCrust') {
+            pizzaOrder.price = thinCrust[pizzaSize.value];
+        } else if (pizzaOrder.dough == 'newYorkStyle') {
+           pizzaOrder.price = newYorkStyle[pizzaSize.value]; 
+        } else if (pizzaOrder.dough == 'gluttenFree') {
+           pizzaOrder.price = gluttenFree[pizzaSize.value];
+        }
+        console.log(pizzaOrder);
+    } 
 };
 
 cheeseOptions.onchange = function () {
@@ -222,16 +263,13 @@ sauceOptions.onchange = function () {
         sauceOptions.style.backgroundColor='red';
     } else {
         sauceOptions.style.backgroundColor='green';
+        pizzaOrder.sauce == sauceOption.value;
+        if (pizzaOrder.)
     }
 };
 
 toppings.onclick = function () {
     console.dir(toppings.value);
-    if (toppings.value == 'toppings') {
-        toppings.style.backgroundColor='red';
-    } else {
-        toppings.style.backgroundColor='green';
-    }
 };
 
 //cc validator

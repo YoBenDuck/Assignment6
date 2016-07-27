@@ -66,8 +66,8 @@
         <hr>
         <label for="streetAddress"><strong>Street Address:</strong></label>
         <input type="text" id="streetAddress" name="streetAddress">
-        <label for="aptNumber">Apt#/Suite#/Room#</label>
-        <input type="text" id="aptNumber" name="aptNumber">
+        <label for="apt_Number">Apt#/Suite#/Room#</label>
+        <input type="text" id="apt_Number" name="apt_Number">
         <br>
         <label for="city_input"><strong>City:</strong></label>
         <input type="text" id="city_input" name="city_input">
@@ -88,10 +88,10 @@
         <h2>Build Your Pizza</h2>
         <strong>Dough Options:</strong>
         <div class="doughOptions">
-            <label for="handTossedRadio"><input type="radio" name="product_crust" id="handTossedRadio" value="handTossedRadio"> Hand Tossed</label>
-            <label for="thinCrustRadio"><input type="radio" name="product_crust" id="thinCrustRadio" value="thinCrustRadio"> Thin Crust</label>
-            <label for="newYorkStyleRadio"><input type="radio" name="product_crust" id="newYorkStyleRadio" value="newYorkStyleRadio"> New York Style</label>
-            <label for="glutenFreeRadio"><input type="radio" name="product_crust" id="glutenFreeRadio" value="glutenFreeRadio"> Gluten Free</label>
+            <label for="handTossedRadio"><input type="radio" name="product_crust" id="handTossedRadio" value="handTossed"> Hand Tossed</label>
+            <label for="thinCrustRadio"><input type="radio" name="product_crust" id="thinCrustRadio" value="thinCrust"> Thin Crust</label>
+            <label for="newYorkStyleRadio"><input type="radio" name="product_crust" id="newYorkStyleRadio" value="newYorkStyle"> New York Style</label>
+            <label for="gluttenFreeRadio"><input type="radio" name="product_crust" id="gluttenFreeRadio" value="gluttenFree"> Glutten Free</label>
         </div>
         <br>
         <strong>Pizza Size:</strong>
@@ -110,9 +110,9 @@
         <label for="sauceOptions"><strong>Sauce Options:</strong></label>
         <select name="sauceOptions" id="sauceOptions">
             <option value="selectedSauceOptions" selected>---Sauce Options:---(Price)---</option>
-            <option value="sauceOptions"> Regular Tomato: No Charge</option>
-            <option value="sauceOptions"> Hearty Tomato: + ($.99)</option>
-            <option value="sauceOptions"> BBQ Sauce: + ($1.99)</option>
+            <option value="Regular Tomato"> Regular Tomato: No Charge</option>
+            <option value="Hearty Tomato"> Hearty Tomato: + ($.99)</option>
+            <option value="BBQ Sauce"> BBQ Sauce: + ($1.99)</option>
         </select>
         <br>
         <hr>
@@ -198,7 +198,7 @@
         <br>
 <!-- My fixed total -->      
       <div id="orderTotal" class="orderTotal">
-          <p><h4><strong>Order Total: $<span id="runningTotal">0.00</span></h4></strong></p>
+          <p><h4><strong>Order Total: $<span id="displayTotal">0.00</span></h4></strong></p>
       </div>
         <hr>
     </form>
