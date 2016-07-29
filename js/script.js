@@ -36,7 +36,7 @@ var pizzaOrder = {
     city: '',
     state: '',
     zip: 0,
-    phoneNumber: 0,
+    phone: 0,
     email: '',
     pizzaSize: '',
     dough: '',
@@ -145,6 +145,7 @@ state_input.onblur = function () {
     console.dir(state_input.value);         
     if (state_input.value.match(/^[a-zA-Z]{2}$/) != null) {
         state_input.style.backgroundColor='green';
+        pizzaOrder.state = state_input.value;
     } else {
         state_input.style.backgroundColor='red';
     }
@@ -154,6 +155,7 @@ zip_input.onblur = function () {
     console.dir(zip_input.value);         
     if (zip_input.value.match(/^\b\d{5}(-\d{4})?\b$/) != null) {
         zip_input.style.backgroundColor='green';
+        pizzaOrder.zip = zip_input.value;
     } else {
         zip_input.style.backgroundColor='red';
     }
@@ -163,6 +165,7 @@ phoneNumber_input.onblur = function () {
     console.dir(phoneNumber_input.value);         
     if (phoneNumber_input.value.match(/^\d{3}-\d{3}-\d{4}$/) != null) {
         phoneNumber_input.style.backgroundColor='green';
+        pizzaOrder.phopne = phoneNumber_input.value;
     } else {
         phoneNumber_input.style.backgroundColor='red';
     }
@@ -172,6 +175,7 @@ email_input.onblur = function () {
     console.dir(email_input.value);         
     if (email_input.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) != null) {
         email_input.style.backgroundColor='green';
+        pizzaOrder.email = email_input.value;
     } else {
         email_input.style.backgroundColor='red';
     }
@@ -264,7 +268,7 @@ sauceOptions.onchange = function () {
     } else {
         sauceOptions.style.backgroundColor='green';
         pizzaOrder.sauce == sauceOption.value;
-        if (pizzaOrder.)
+        /*if (pizzaOrder.)***how do i get price?*/
     }
 };
 
@@ -276,6 +280,7 @@ toppings.onclick = function () {
 ccNumber.onblur = function() {
   if (validCreditCardNo(ccNumber.value)) {
       ccNumber.style.backgroundColor='green';
+        pizzaOrder.ccNumber = ccNumber.value;
   } else {
       ccNumber.style.backgroundColor='red';
   }
