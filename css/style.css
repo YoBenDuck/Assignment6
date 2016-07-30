@@ -26,6 +26,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', end
    width: 180px;
 }
 
+.green {
+    background-color: green;
+}
+.red {
+    background-color: red;
+}
 /*#cvcCss {
     float: right;
 }

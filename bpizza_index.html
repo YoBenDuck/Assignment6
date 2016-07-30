@@ -101,18 +101,18 @@
         <hr>
         <label for="cheeseOptions"><strong>Cheese Options:</strong></label>
         <select name="cheeseOptions" id="cheeseOptions">
-            <option value="selectedCheeseOptions" selected>---Cheese Options---(Price)---</option>
-            <option value="cheeseOptions"> Light: No Charge</option>
-            <option value="cheeseOptions"> Normal: (default) No Charge</option>
-            <option value="cheeseOptions"> Extra: + ($2.99)</option>
-            <option value="cheeseOptions"> Double: + ($3.99)</option>
+            <option value="" selected>---Cheese Options---(Price)---</option>
+            <option value="0"> Light: No Charge</option>
+            <option value="0"> Normal: (default) No Charge</option>
+            <option value="2.99"> Extra: + ($2.99)</option>
+            <option value="3.99"> Double: + ($3.99)</option>
         </select>
         <label for="sauceOptions"><strong>Sauce Options:</strong></label>
         <select name="sauceOptions" id="sauceOptions">
-            <option value="selectedSauceOptions" selected>---Sauce Options:---(Price)---</option>
-            <option value="Regular Tomato"> Regular Tomato: No Charge</option>
-            <option value="Hearty Tomato"> Hearty Tomato: + ($.99)</option>
-            <option value="BBQ Sauce"> BBQ Sauce: + ($1.99)</option>
+            <option value="" selected>---Sauce Options:---(Price)---</option>
+            <option value="0"> Regular Tomato: No Charge</option>
+            <option value="0.99"> Hearty Tomato: + ($.99)</option>
+            <option value="1.99"> BBQ Sauce: + ($1.99)</option>
         </select>
         <br>
         <hr>
@@ -198,7 +198,7 @@
         <br>
 <!-- My fixed total -->      
       <div id="orderTotal" class="orderTotal">
-          <p><h4><strong>Order Total: $<span id="displayTotal">0.00</span></h4></strong></p>
+          <p><h4><strong>Order Total: $<span id="displayTotal"></span></h4></strong></p>
       </div>
         <hr>
     </form>

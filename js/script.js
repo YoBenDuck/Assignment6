@@ -30,7 +30,6 @@ size 'S' 'M' 'L' 'XL'*/
 var pizzaOrder = {
     name: '',
     addressType: '',
-    toppings: 0,
     streetAddress: '',
     apt: 0,
     city: '',
@@ -38,10 +37,10 @@ var pizzaOrder = {
     zip: 0,
     phone: 0,
     email: '',
-    pizzaSize: '',
+    pizzaSize: 0,
     dough: '',
-    cheese: '',
-    sauce: '',
+    cheese: 0,
+    sauce: 0,
     toppings: 0,
     comments: '',
     price: 0,
@@ -82,15 +81,17 @@ billingState = document.getElementById('billingState'),
 billingZip = document.getElementById('billingZip'),
 orderUpButton = document.getElementById('orderUpButton'),
 displayTotal = document.getElementById('displayTotal'),
-total = 0.00;
+total = 0;
 
 //*** Delivery Information ***
 name_input.onblur = function () {
-    console.dir(name_input.value);   //contains text      
-    if (name_input.value.match(/\d/) != null) { //validates input
-        name_input.style.backgroundColor='red';
+    console.log('name '+ name_input.value);   //contains text      
+    if (name_input.value.match(/\d/) != null || name_input.value=='') { //validates input
+        name_input.classList.add('red');
+        name_input.classList.remove('green');
     } else {
-        name_input.style.backgroundColor='green';
+        name_input.classList.remove('red');
+        name_input.classList.add('green');
         pizzaOrder.name_input = name_input.value;
     }
 }; 
@@ -98,9 +99,11 @@ name_input.onblur = function () {
 addressType_input.onchange = function () {
     console.dir(addressType_input);
     if (addressType_input.value == 'wrong') {
-        addressType_input.style.backgroundColor='red';
+        name_input.classList.add('red');
+        name_input.classList.remove('green');
     } else {
-        addressType_input.style.backgroundColor='green';
+        name_input.classList.remove('red');
+        name_input.classList.add('green');
         if (addressType_input.value == 'Other') {
             otherAddress.classList.remove('hidden');
         } else {
@@ -112,11 +115,13 @@ addressType_input.onchange = function () {
 
 streetAddress.onblur = function () {
     console.dir(streetAddress.value); 
-    if (streetAddress.value.match(/^[ 0-9a-zA-Z.-]+$/) != null) { 
-        streetAddress.style.backgroundColor='green';
+    if (streetAddress.value.match(/^[ 0-9a-zA-Z.-]+$/) != null || streetAddress.value=='') { 
+        streetAddress.classList.add('green');
+        streetAddress.classList.remove('red');
         pizzaOrder.streetAddress = streetAddress.value;
     } else {
-       streetAddress.style.backgroundColor='red';
+       streetAddress.classList.remove('green');
+        streetAddress.classList.add('red');
     }
 };
 
@@ -199,6 +204,8 @@ var gluttenFree = {
     small: 10.99
 };
 
+var total = 0;
+
 handTossedRadio.onclick = function () {
     //console.log('populate select w handtossed');
     pizzaOrder.dough = handTossedRadio.value;
@@ -240,40 +247,45 @@ pizzaSize.onchange = function () {
         pizzaSize.style.backgroundColor='green';
         pizzaOrder.pizzaSize = pizzaSize.value;
         if (pizzaOrder.dough == 'handTossed') {
-            pizzaOrder.price = handTossed[pizzaSize.value];
+            pizzaOrder.price = handTossed[pizzaSize.value]; 
+           updateTotal();
+            console.log(pizzaOrder.price);
+           
         } else if (pizzaOrder.dough == 'thinCrust') {
             pizzaOrder.price = thinCrust[pizzaSize.value];
+            updateTotal();
         } else if (pizzaOrder.dough == 'newYorkStyle') {
            pizzaOrder.price = newYorkStyle[pizzaSize.value]; 
+            updateTotal();
         } else if (pizzaOrder.dough == 'gluttenFree') {
            pizzaOrder.price = gluttenFree[pizzaSize.value];
+            updateTotal();
         }
         console.log(pizzaOrder);
     } 
 };
 
 cheeseOptions.onchange = function () {
-    console.dir(cheeseOptions.value);
-    if (cheeseOptions.value == 'selectedCheeseOptions') {
-        cheeseOptions.style.backgroundColor='red';
-    } else {
-        cheeseOptions.style.backgroundColor='green';
-    }
+    
+    pizzaOrder.cheese = Number(cheeseOptions.value);
+    updateTotal();
+    console.log(cheeseOptions.value);
+    
 };
 
 sauceOptions.onchange = function () {
-    console.dir(sauceOptions.value);
-    if (sauceOptions.value == 'selectedSauceOptions') {
-        sauceOptions.style.backgroundColor='red';
-    } else {
-        sauceOptions.style.backgroundColor='green';
-        pizzaOrder.sauce == sauceOption.value;
-        /*if (pizzaOrder.)***how do i get price?*/
-    }
+    pizzaOrder.sauce = Number(sauceOptions.value);
+        updateTotal();
+    console.log(sauceOptions.value);
 };
 
-toppings.onclick = function () {
-    console.dir(toppings.value);
+toppings.onchange = function(event) {
+    if (event.target.checked) {
+        pizzaOrder.toppings += 0.99;
+    } else {
+        pizzaOrder.toppings -= 0.99;
+    }
+    updateTotal();
 };
 
 //cc validator
@@ -334,17 +346,25 @@ ccExpirationYear.onchange = function () {
 
 // *** cc Billing Information *** 
 
-sameAsDelivery.onclick = function () {
-    console.dir(sameAsDelivery.value);
+sameAsDelivery.onchange = function (event) {
+   if (event.target.checked) {
     billingName.value = name_input.value;
     billingAddress.value = streetAddress.value;
-    billingAptNumber.value = aptNumber.value;
+    billingAptNumber.value = apt_Number.value;
     billingCity.value = city_input.value;
     billingState.value = state_input.value;
     billingZip.value = zip_input.value;
+    } else {
+       billingName.value = '';
+    billingAddress.value = '';
+    billingAptNumber.value = '';
+    billingCity.value = '';
+    billingState.value = '';
+    billingZip.value = '';
+    }
 };
 
-billingName.onblur = function () {
+billingName.onchange = function () {
     console.dir(billingName.value);        
     if (billingName.value.match(/\d/) != null) { 
         billingName.style.backgroundColor='red';
@@ -353,13 +373,14 @@ billingName.onblur = function () {
     }
 }; 
 
-billingAddress.onblur = function () {
+billingAddress.onchange = function () {
     console.dir(billingAddress.value); 
     console.log(billingAddress.value.match(/^[ 0-9a-zA-Z.-]+$/));
     if (billingAddress.value.match(/^[ 0-9a-zA-Z.-]+$/) != null) { 
         billingAddress.style.backgroundColor='green';
     } else {
        billingAddress.style.backgroundColor='red';
+        
     }
 };
 
@@ -398,3 +419,41 @@ billingZip.onblur = function () {
         billingZip.style.backgroundColor='red';
     }
 };
+
+function updateTotal() {
+    mytotal = Number(pizzaOrder.price) +  Number(pizzaOrder.cheese) +  Number(pizzaOrder.sauce) +  Number(pizzaOrder.toppings);
+    
+    displayTotal.innerHTML = mytotal.toFixed(2);
+
+    console.log("price:" + pizzaOrder.price);
+    console.log("cheese:"+ pizzaOrder.cheese);
+    console.log("souce:" + pizzaOrder.sauce);
+    console.log("topings:" + pizzaOrder.toppings);
+    
+};
+
+
+
+orderUpButton.onclick = function() {
+    console.log(name_input.classList);
+    if (name_input.classList.contains('green')&&
+        streetAddress.style.backgroundColor=='green'/*&&
+        apt_Number.style.backgroundColor=='green'&&
+        city_input.style.backgroundColor=='green'&&
+        state_input.style.backgroundColor=='green'&&
+        zip_input.style.backgroundColor=='green'&&
+        phoneNumber_input.style.backgroundColor=='green'&&
+        email_input.style.backgroundColor=='green'&&
+        ccNumber.style.backgroundColor=='green'&&
+        cvc.style.backgroundColor=='green'&&
+        ccExpirationMonth.style.backgroundColor=='green'&&
+        ccExpirationYear.style.backgroundColor=='green'&&
+        pizzaOrder.price != 0*/
+       )
+        
+        {
+        alert("Your Order is on the way")
+        } else { 
+            alert("please check order for errors")
+    }
+       };
