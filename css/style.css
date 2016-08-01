@@ -3,61 +3,34 @@
 body {font-family: 'Roboto', sans-serif;font-size:1.2em;line-height:2em;
 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffb76b+0,ffa73d+30,ff7c00+50,ff7f04+100 */
 background: #ffb76b; /* Old browsers */
-background: -moz-linear-gradient(top,  #ffb76b 0%, #ffa73d 30%, #ff7c00 50%, #ff7f04 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  #ffb76b 0%,#ffa73d 30%,#ff7c00 50%,#ff7f04 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  #ffb76b 0%,#ffa73d 30%,#ff7c00 50%,#ff7f04 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+background: -moz-linear-gradient(top, #ffb76b 0%, #ffa73d 30%, #ff7c00 50%, #ff7f04 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #ffb76b 0%,#ffa73d 30%,#ff7c00 50%,#ff7f04 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #ffb76b 0%,#ffa73d 30%,#ff7c00 50%,#ff7f04 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', endColorstr='#ff7f04',GradientType=0 ); /* IE6-9 background:#FFF repeat-x;margin:0;*/}
 
 /* CONTAINER */
-.jumbotron img { width: 140px; height: auto;}
+.jumbotron img {width: 140px; height: auto;}
+.jumbotron {position: relative;background: #000 url('../images/pizza_hero_image.jpg') center center;width: 100%;height: 100%;background-size: cover;overflow: hidden;}
 
-.jumbotron {
-    position: relative;
-    background: #000 url('../images/pizza_hero_image.jpg') center center;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    overflow: hidden;
-}
-
-.hidden { display:none;}
-
-.ccLogo img {
-   width: 180px;
-}
-
-.green {
-    background-color: green;
-}
-.red {
-    background-color: red;
-}
-/*#cvcCss {
-    float: right;
-}
-
-#ccExpirationMonthCss {
-    float: right;
-}*/
+.hidden {display:none;}
+.ccLogo img {width: 180px;}
+.green {background-color: green;}
+.red {background-color: red;}
+/*#cvcCss {float: right;}
+#ccExpirationMonthCss {float: right;}*/
 
 /* BUTTON */
-#orderUpButtonContainer {
-    text-align: center;
-}
-#orderUpButton {
-    color: #fff;
-    background-color: darkgreen;
-    border-color: darkgreen;
-}
-.orderTotal { position: fixed; top: 20px; right: 20px; padding: 0 10px; text-align: center; color: darkgreen; background-color: rgba(0, 0, 0, 0.25); border-radius: 6px; }
-.copyRight { text-align: center; }
-.social-media { color: darkgreen; }
+#orderUpButtonContainer {text-align: center;}
+#orderUpButton {color: #fff;background-color: darkgreen;border-color: darkgreen;}
+.orderTotal {position: fixed; top: 20px; right: 20px; padding: 0 10px; text-align: center; color: darkgreen; background-color: rgba(0, 0, 0, 0.25); border-radius: 6px;}
 
 /* FOOTER */
-.social-media               {margin:0 auto; width:165px;}
+footer                      {text-align: center;}
+.copyRight                  {text-align: center;}
+.social-media               {margin:0 auto; width:165px;color: darkgreen;}
 .social-media div           {float:left;}
 .social-media a             {display:block;width:36px;height:36px;text-indent:-9999px;}
-.social-media div.one       {background:url('../images/social-icons-sketchtransparent.png') 0 0;}
+.social-media div.one       {background:url('../images/social-icons-sketchtransparent.png') 0 0;margin-left:10px;}
 .social-media div.two 	    {background:url('../images/social-icons-sketchtransparent.png') -38px 0;}
 .social-media div.three     {background:url('../images/social-icons-sketchtransparent.png') -80px 0;}
 .social-media div.four 	    {background:url('../images/social-icons-sketchtransparent.png') -120px 0;}

@@ -45,7 +45,8 @@ var pizzaOrder = {
     comments: '',
     price: 0,
     payment:'',
-    ccNumber: 0
+    ccNumber: 0,
+    cvc: 0,
 },
 
 //pizzaOrder = document.getElementById('pizzaOrder'),
@@ -99,11 +100,11 @@ name_input.onblur = function () {
 addressType_input.onchange = function () {
     console.dir(addressType_input);
     if (addressType_input.value == 'wrong') {
-        name_input.classList.add('red');
-        name_input.classList.remove('green');
+        addressType_input.classList.add('red');
+        addressType_input.classList.remove('green');
     } else {
-        name_input.classList.remove('red');
-        name_input.classList.add('green');
+       addressType_input.classList.remove('red');
+        addressType_input.classList.add('green');
         if (addressType_input.value == 'Other') {
             otherAddress.classList.remove('hidden');
         } else {
@@ -114,8 +115,8 @@ addressType_input.onchange = function () {
 };
 
 streetAddress.onblur = function () {
-    console.dir(streetAddress.value); 
-    if (streetAddress.value.match(/^[ 0-9a-zA-Z.-]+$/) != null || streetAddress.value=='') { 
+    console.log('streetAddress '+ streetAddress.value);
+    if (streetAddress.value.match(/^[ 0-9a-zA-Z.-]+$/) != null) { 
         streetAddress.classList.add('green');
         streetAddress.classList.remove('red');
         pizzaOrder.streetAddress = streetAddress.value;
@@ -126,63 +127,74 @@ streetAddress.onblur = function () {
 };
 
 apt_Number.onblur = function () {
-    console.dir(apt_Number.value);       
+       
     if (apt_Number.value.match(/^[ 0-9a-zA-Z.-]+$/) != null) { 
-        apt_Number.style.backgroundColor='green';
+        apt_Number.classList.add('green');
+        apt_Number.classList.remove('red');
         pizzaOrder.aptNumber = apt_Number.value;
-        console.log(pizzaOrder);
     } else {
-       apt_Number.style.backgroundColor='red';
+        apt_Number.classList.remove('green');
+        apt_Number.classList.add('red');
     }
 };
 
 city_input.onblur = function () {
     console.dir(city_input.value);         
     if (city_input.value.match(/^[ 0-9a-zA-Z.:-]+$/) != null) {
-        city_input.style.backgroundColor='green';
+        city_input.classList.add('green');
+        city_input.classList.remove('red');
         pizzaOrder.city = city_input.value;
     } else {
-        city_input.style.backgroundColor='red';
+        city_input.classList.remove('green');
+        city_input.classList.add('red');
     }
 }; 
 
 state_input.onblur = function () {
     console.dir(state_input.value);         
     if (state_input.value.match(/^[a-zA-Z]{2}$/) != null) {
-        state_input.style.backgroundColor='green';
+        state_input.classList.add('green');
+        state_input.classList.remove('red');
         pizzaOrder.state = state_input.value;
     } else {
-        state_input.style.backgroundColor='red';
+        state_input.classList.remove('green');
+        state_input.classList.add('red');
     }
 };
 
 zip_input.onblur = function () {
     console.dir(zip_input.value);         
     if (zip_input.value.match(/^\b\d{5}(-\d{4})?\b$/) != null) {
-        zip_input.style.backgroundColor='green';
+        zip_input.classList.add('green');
+        zip_input.classList.remove('red');
         pizzaOrder.zip = zip_input.value;
     } else {
-        zip_input.style.backgroundColor='red';
+        zip_input.classList.remove('green');
+        zip_input.classList.add('red');
     }
 };
 
 phoneNumber_input.onblur = function () {
     console.dir(phoneNumber_input.value);         
     if (phoneNumber_input.value.match(/^\d{3}-\d{3}-\d{4}$/) != null) {
-        phoneNumber_input.style.backgroundColor='green';
+        phoneNumber_input.classList.add('green');
+        phoneNumber_input.classList.remove('red');
         pizzaOrder.phopne = phoneNumber_input.value;
     } else {
-        phoneNumber_input.style.backgroundColor='red';
+        phoneNumber_input.classList.remove('green');
+        phoneNumber_input.classList.add('red');
     }
 };
 
 email_input.onblur = function () {
     console.dir(email_input.value);         
     if (email_input.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) != null) {
-        email_input.style.backgroundColor='green';
+        email_input.classList.add('green');
+        email_input.classList.remove('red');
         pizzaOrder.email = email_input.value;
     } else {
-        email_input.style.backgroundColor='red';
+        email_input.classList.remove('green');
+        email_input.classList.add('red');
     }
 };
 
@@ -242,9 +254,11 @@ function createSelectSizeOptions(pizzaSizesObj) {
 pizzaSize.onchange = function () {
     console.dir(pizzaSize.value);
     if (pizzaSize.value == '--Selcet a Pizza Size--') {
-        pizzaSize.style.backgroundColor='red';
+        pizzaSize.classList.add('red');
+        pizzaSize.classList.remove('green');
     } else {
-        pizzaSize.style.backgroundColor='green';
+        pizzaSize.classList.remove('red');
+        pizzaSize.classList.add('green');
         pizzaOrder.pizzaSize = pizzaSize.value;
         if (pizzaOrder.dough == 'handTossed') {
             pizzaOrder.price = handTossed[pizzaSize.value]; 
@@ -291,37 +305,45 @@ toppings.onchange = function(event) {
 //cc validator
 ccNumber.onblur = function() {
   if (validCreditCardNo(ccNumber.value)) {
-      ccNumber.style.backgroundColor='green';
+      ccNumber.classList.add('green');
+      ccNumber.classList.remove('red');
         pizzaOrder.ccNumber = ccNumber.value;
   } else {
-      ccNumber.style.backgroundColor='red';
+      ccNumber.classList.remove('green');
+      ccNumber.classList.add('red');
   }
 };
 
 cvc.onblur = function () {
     console.dir(cvc.value);         
     if (cvc.value.match(/^\d{3}$/) != null) {
-        cvc.style.backgroundColor='green';
+      cvc.classList.add('green');
+      cvc.classList.remove('red');
     } else {
-        cvc.style.backgroundColor='red';
+      cvc.classList.remove('green');
+      cvc.classList.add('red');
     }
 };
 
 ccExpirationMonth.onchange = function () {
     console.dir(ccExpirationMonth);
     if (ccExpirationMonth.value == 'selectMonth') {
-        ccExpirationMonth.style.backgroundColor='red';
+        ccExpirationMonth.classList.add('red');
+        ccExpirationMonth.classList.remove('green');
     } else {
-        ccExpirationMonth.style.backgroundColor='green';
+        ccExpirationMonth.classList.remove('red');
+        ccExpirationMonth.classList.add('green');
     }
 };
 
 ccExpirationYear.onchange = function () {
     console.dir(ccExpirationYear);
     if (ccExpirationYear.value == 'selectYear') {
-        ccExpirationYear.style.backgroundColor='red';
+        ccExpirationYear.classList.add('red');
+        ccExpirationYear.classList.remove('green');
     } else {
-        ccExpirationYear.style.backgroundColor='green';
+        ccExpirationYear.classList.remove('red');
+        ccExpirationYear.classList.add('green');
     }
 };
 
@@ -432,28 +454,25 @@ function updateTotal() {
     
 };
 
-
-
 orderUpButton.onclick = function() {
     console.log(name_input.classList);
     if (name_input.classList.contains('green')&&
-        streetAddress.style.backgroundColor=='green'/*&&
-        apt_Number.style.backgroundColor=='green'&&
-        city_input.style.backgroundColor=='green'&&
-        state_input.style.backgroundColor=='green'&&
-        zip_input.style.backgroundColor=='green'&&
-        phoneNumber_input.style.backgroundColor=='green'&&
-        email_input.style.backgroundColor=='green'&&
-        ccNumber.style.backgroundColor=='green'&&
-        cvc.style.backgroundColor=='green'&&
-        ccExpirationMonth.style.backgroundColor=='green'&&
-        ccExpirationYear.style.backgroundColor=='green'&&
-        pizzaOrder.price != 0*/
+        streetAddress.classList.contains('green')&&
+        apt_Number.classList.contains('green')&&
+        city_input.classList.contains('green')&&
+        state_input.classList.contains('green')&&
+        zip_input.classList.contains('green')&&
+        phoneNumber_input.classList.contains('green')&&
+        email_input.classList.contains('green')&&
+        ccNumber.classList.contains('green')&&
+        ccExpirationMonth.classList.contains('green')&&
+        ccExpirationYear.classList.contains('green')&&
+        pizzaOrder.price != 0
        )
         
         {
-        alert("Your Order is on the way")
+        alert("Your Order is on the way.")
         } else { 
-            alert("please check order for errors")
+            alert("Please check order for errors.")
     }
        };
